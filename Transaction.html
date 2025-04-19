@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Single Profile with Funding Options</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .profile-container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .profile-container img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+    }
+
+    .short-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .profile-container h3 {
+      margin: 0 0 0.5rem;
+    }
+
+    .profile-container p {
+      margin: 0.3rem 0;
+      color: #555;
+    }
+
+    .fund-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .fund-options button {
+      width: auto;
+      padding: 0.5rem 1rem;
+      height: auto;
+      font-size: 0.9rem;
+    }
+
+    .custom-fund {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      justify-content: center;
+    }
+
+    .custom-fund input {
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      width: 100px;
+    }
+
+    .glow-on-hover {
+      border: none;
+      outline: none;
+      color: #fff;
+      background-color: #2eb82e;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 10px;
+      underline: none;
+      text-decoration: none;
+    }
+
+    .glow-on-hover:before {
+      content: '';
+      background: linear-gradient(45deg, #99ff99);
+      position: absolute;
+      top: -2px;
+      left:-2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: glowing 20s linear infinite;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+    }
+
+    .glow-on-hover:active {
+      color: #000
+    }
+
+    .glow-on-hover:active:after {
+      background: transparent;
+    }
+
+    .glow-on-hover:hover:before {
+      opacity: 1;
+    }
+
+    .glow-on-hover:after {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #2eb82e;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+
+    @keyframes glowing {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-section" id="nav-section">
+
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <img src="assets/real-jane.jpg" alt="Jane">
+    <div class="short-desc">Cafe Owner</div>
+    <h3>Jane Doe</h3>
+    <p>Small cafe that only uses ethically-sourced beans.</p>
+    <p>Seeking <strong>$25</strong> in investments</p>
+
+    <div class="fund-options">
+      <button class="glow-on-hover" type="button">Fund</button>
+    </div>
+  </div>
+  <script src="nav.js"></script>
+</body>
+</html>
