@@ -48,6 +48,10 @@ section{
     line-height: 1.5em;
 }
 
+.title-span-two{
+    color:rgb(22, 167, 22) ;
+}
+
 .span-paragraph{
     font-family: "Poppins", sans-serif;
 }
