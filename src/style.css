@@ -13,33 +13,16 @@ body{
 main{
     height: auto;
     width: 100%;
-    display: flex;
 }
 
 section{
     height: 100vh;
-    width: 50%;
+    width: 100%;
     /* background-color: #85FFBD;
     background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%); */
     background-image: linear-gradient(135deg, #f5f7fa 50%, #edf0f3 100%);
     padding: 5em;
-    padding-right: 1.5em;
 
-}
-
-.farmer-pic{
-    width: 50%;
-    justify-content: center;
-    
-}
-
-.farmer-pic img{
-    width: 32em;
-    height: 25em;
-    border-radius: 2em;
-    -webkit-box-shadow: 10px 10px 54px -22px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 54px -22px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 54px -22px rgba(0,0,0,0.75);
 }
 
 .title-span, .title-span-one, .title-span-two{
@@ -53,7 +36,7 @@ section{
 }
 
 .loremspan{
-    width: 45%;
+    width: 30%;
 }
 
 .button{
