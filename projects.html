@@ -7,8 +7,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 2rem;
+      background-color: #85FFBD;
+      background-image: linear-gradient(135deg, #f5f7fa 50%, #edf0f3 100%);
+      /* padding: 2rem; */
     }
 
     .profile-grid {
@@ -153,15 +154,20 @@
   </style>
 </head>
 <body>
+  <header>
+    <div class="nav-section" id="nav-section">
+
+    </div>
+  </header>
 
   <div class="profile-grid">
     <!-- Row 1 -->
     <div class="profile-cell left-cell">
-      <img src="https://via.placeholder.com/80" alt="Jane">
-      <div class="short-desc">Cafe Owner</div>
+      <img src="assets/real-jane.jpg" alt="Jane">
+      <div class="short-desc">Jane Doe</div>
     </div>
     <div class="profile-cell right-cell">
-      <h3>Jane Doe</h3>
+      <h3>Cafe Owner</h3>
       <p>Small cafe that only uses ethically-sourced beans.</p>
       <p>Seeking <strong>$25</strong> in investments</p>
       <a href="transaction.html" style="text-decoration: none;"><button class="glow-on-hover" type="button">Help Fund</button></a>
@@ -169,11 +175,11 @@
 
     <!-- Row 2 -->
     <div class="profile-cell left-cell">
-      <img src="https://via.placeholder.com/80" alt="John">
-      <div class="short-desc">Backend Developer</div>
+      <img src="assets/real-john.jpg" alt="John">
+      <div class="short-desc">John Smith</div>
     </div>
     <div class="profile-cell right-cell">
-      <h3>John Smith</h3>
+      <h3>Backend Developer</h3>
       <p>App that would provide users a crowd-funded VC platform.</p>
       <p>Seeking <strong>$50</strong> in investments</p>
       <a href="transaction.html" style="text-decoration: none;"><button class="glow-on-hover" type="button">Help Fund</button></a>
@@ -181,16 +187,17 @@
 
     <!-- Row 3 -->
     <div class="profile-cell left-cell">
-      <img src="https://via.placeholder.com/80" alt="Sasha">
-      <div class="short-desc">PM & Strategist</div>
+      <img src="assets/real-sasha.jpg" alt="Sasha">
+      <div class="short-desc">Sasha Lee</div>
     </div>
     <div class="profile-cell right-cell">
-      <h3>Sasha Lee</h3>
+      <h3>PM & Strategist</h3>
       <p>Putting crypto on the blockchain.</p>
       <p>Seeking <strong>$50</strong> in investments</p>
       <a href="" style="text-decoration: none;"><button class="glow-on-hover" type="button">Help Fund</button></a>
     </div>
   </div>
+  <script src="nav.js"></script>
 </body>
 </html>
 
