@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "ethers": "^6.13.5",
+    "express": "^5.1.0"
+  },
+  "name": "kuvana",
+  "description": "KUVANA",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
