@@ -10,6 +10,7 @@
   "scripts": {
     "test": "test"
   },
+  "type": "module",
   "author": "",
   "license": "ISC"
 }

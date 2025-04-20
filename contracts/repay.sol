@@ -10,10 +10,10 @@ contract RepaymentDeed {
     uint private duration;
     uint private instalments;
 
-    constructor(address payable _lender, uint _totalLoan, uint _interestRate, uint _duration, uint _instalments) {
+    constructor(address payable _lender, uint _interestRate, uint _duration, uint _instalments) payable {
       borrower = payable(msg.sender);
       lender = _lender;
-      totalLoan = _totalLoan;
+      totalLoan = msg.value;
       interestRate = _interestRate;
       startDate = block.timestamp;
       duration = _duration;
@@ -27,7 +27,7 @@ contract RepaymentDeed {
 
     function payToContract () public payable {
       require(msg.sender == borrower, "Only borrower can make payments");
-      uint amount = msg.value;
+      uint amount = (totalLoan*interestRate)/instalments;
       if (amount > getRemainingBalance()) {
         revert InvalidPayment(amount, getRemainingBalance());
       }
@@ -36,6 +36,7 @@ contract RepaymentDeed {
     function payToLender() public {
       emit PaymentMade(borrower, address(this).balance, getRemainingBalance());
       lender.transfer(address(this).balance);
+      totalLoan -= address(this).balance;
     }
     
     function payInstalment() public payable {
@@ -48,6 +49,6 @@ contract RepaymentDeed {
     }
 
     function getRemainingBalance() public view returns (uint) {
-        return totalLoan - (totalLoan * interestRate / 100);
+        return totalLoan;
     }
 }
