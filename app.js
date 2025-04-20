@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as ethers from 'ethers';
-import { repaymentContract, lendContract, provider } from './ethers.js';
+import { repaymentContract, lendContract } from './ethers.js';
 
 const app = express();
 const port = 3000;
@@ -10,8 +10,6 @@ const port = 3000;
 // Fix for __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const signer = await provider.getSigner();
 
 app.use(express.static('./'));
 app.use(express.json()); // for future-proofing body parsing
@@ -27,12 +25,12 @@ app.post('/api/lend', async (req, res) => {
 
   try {
     const tx = await lendContract.sendLoan({
-      value: ethers.parseEther('0.05') // Change as needed
+      value: ethers.parseEther('0.05') // Adjust as needed
     });
     await tx.wait();
     res.json({ status: 'success', transactionHash: tx.hash });
   } catch (error) {
-    console.error(error);
+    console.error('LEND ERROR:', error);
     res.status(500).json({ status: 'error', message: error.message });
   }
 });
@@ -41,12 +39,12 @@ app.post('/api/lend', async (req, res) => {
 app.post('/api/repay', async (req, res) => {
   try {
     const tx = await repaymentContract.payInstalment({
-      value: ethers.parseEther('0.05') // Change as needed
+      value: ethers.parseEther('0.05') // Adjust as needed
     });
     await tx.wait();
     res.json({ status: 'success', transactionHash: tx.hash });
   } catch (error) {
-    console.error(error);
+    console.error('REPAY ERROR:', error);
     res.status(500).json({ status: 'error', message: error.message });
   }
 });
