@@ -1,4 +1,5 @@
 import { JsonRpcProvider } from 'ethers';
+import { clearScreenDown } from 'readline';
 
 const REPAYMENT_CONTRACT_ADDRESS = "0xD63dBa80618d5C164AE5e323f6060795c42c0F27"
 const LEND_CONTRACT_ADDRESS = "0xb2B663C76B6591E820069D2A812536a4cf129EbC"
