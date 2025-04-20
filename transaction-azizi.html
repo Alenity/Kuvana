@@ -139,20 +139,15 @@
   <script src="nav.js"></script>
   <script>
     document.getElementById('fundBtn').addEventListener('click', async () => {
-      const lender = '0x3be8324273dE5E194fc813415eF03742dEA7F511';
-      const interestRate = 5;
-      const duration = 30;
-      const instalments = 1;
+      const borrower = '0x3be8324273dE5E194fc813415eF03742dEA7F511';
 
-      const queryParams = new URLSearchParams({
-        lender,
-        interestRate,
-        duration,
-        instalments
-      }).toString();
+      const queryParams = new URLSearchParams({ borrower }).toString();
 
       try {
-        const response = await fetch(`/api/lend?${queryParams}`);
+        const response = await fetch(`/api/lend?${queryParams}`, {
+          method: 'POST',
+        });
+
         const result = await response.json();
 
         if (response.ok) {
