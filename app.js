@@ -11,11 +11,11 @@ app.get('/', async (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
-app.get('/api/lend', async (req, res) => {
-  const { lender, interestRate, duration, instalments } = req.query
-  
+app.post('/api/lend', async (req, res) => {
+  const { borrower } = req.query
+  const contract = new lendContract(borrower)
   try {
-    const tx = await lendContract.sendLoan(lender, interestRate, duration, instalments)
+    const tx = await contract.sendLoan()
     await tx.wait()
     res.json({ status: 'success', transactionHash: tx.hash })
   } catch (error) {
@@ -23,9 +23,16 @@ app.get('/api/lend', async (req, res) => {
   }
 })
 
-app.get('/api/repay', async (req, res) => {
-  const { amount } = req.query
-  
+app.post('/api/repay', async (req, res) => {
+  const { lender, interestRate, duration, instalments} = req.query
+  const contract = new repaymentContract(lender, interestRate, duration, instalments)
+  try {
+    const tx = await contract.payInstalment()
+    await tx.wait()
+    res.json({ status: 'success', transactionHash: tx.hash })
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: error.message })
+  }
   try {
     const tx = await repaymentContract.payInstalment()
     await tx.wait()
