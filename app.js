@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import { Contract } from 'ethers'
+import { repaymentContract, lendContract } from './ethers.js'
 const app = express()
 const port = 3000
 
@@ -13,9 +13,21 @@ app.get('/', async (req, res) => {
 
 app.get('/api/lend', async (req, res) => {
   const { lender, interestRate, duration, instalments } = req.query
-  const repaymentContract = new Contract(REPAYMENT_CONTRACT_ADDRESS, REPAYMENT_CONTRACT_ABI, provider)
+  
   try {
-    const tx = await repaymentContract.lend(lender, interestRate, duration, instalments)
+    const tx = await lendContract.sendLoan(lender, interestRate, duration, instalments)
+    await tx.wait()
+    res.json({ status: 'success', transactionHash: tx.hash })
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: error.message })
+  }
+})
+
+app.get('/api/repay', async (req, res) => {
+  const { amount } = req.query
+  
+  try {
+    const tx = await repaymentContract.payInstalment()
     await tx.wait()
     res.json({ status: 'success', transactionHash: tx.hash })
   } catch (error) {
