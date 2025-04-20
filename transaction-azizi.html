@@ -8,7 +8,6 @@
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
-      
     }
 
     .profile-container {
@@ -58,22 +57,6 @@
       padding: 0.5rem 1rem;
       height: auto;
       font-size: 0.9rem;
-    }
-
-    .custom-fund {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
-      justify-content: center;
-    }
-
-    .custom-fund input {
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
-      width: 100px;
     }
 
     .glow-on-hover {
@@ -134,29 +117,53 @@
       50% { background-position: 400% 0; }
       100% { background-position: 0 0; }
     }
-
   </style>
 </head>
-<header>
-    <div class="nav-section" id="nav-section">
-
-    </div>
-</header>
 <body>
+  <header>
+    <div class="nav-section" id="nav-section"></div>
+  </header>
 
   <div class="profile-container">
     <img src="assets/azizi.jpg" alt="Jane">
-        <div class="short-desc">Azizi Kilel</div>
+    <div class="short-desc">Azizi Kilel</div>
     <h3>Agriculturist</h3>
     <p>Local Kenyan marketplace that would like to offer higher-quality produce.</p>
     <p>Seeking <strong>$50</strong> in investments</p>
 
     <div class="fund-options">
-      <form action="/api/lend" method="POST">
-        <button class="glow-on-hover" type="button">Fund</button>
-      </form>
+      <button class="glow-on-hover" id="fundBtn" type="button">Fund</button>
     </div>
   </div>
+
   <script src="nav.js"></script>
+  <script>
+    document.getElementById('fundBtn').addEventListener('click', async () => {
+      const lender = '0x3be8324273dE5E194fc813415eF03742dEA7F511';
+      const interestRate = 5;
+      const duration = 30;
+      const instalments = 1;
+
+      const queryParams = new URLSearchParams({
+        lender,
+        interestRate,
+        duration,
+        instalments
+      }).toString();
+
+      try {
+        const response = await fetch(`/api/lend?${queryParams}`);
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(`✅ Success! TX Hash: ${result.transactionHash}`);
+        } else {
+          alert(`❌ Error: ${result.message}`);
+        }
+      } catch (err) {
+        alert('❌ Network or server error: ' + err.message);
+      }
+    });
+  </script>
 </body>
 </html>
