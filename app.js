@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as ethers from 'ethers';
-import { repaymentContract, lendContract } from './ethers.js';
+import { repaymentContract, lendContract, provider } from './ethers.js';
 
 const app = express();
 const port = 3000;
@@ -10,6 +10,8 @@ const port = 3000;
 // Fix for __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const signer = await provider.getSigner();
 
 app.use(express.static('./'));
 app.use(express.json()); // for future-proofing body parsing
