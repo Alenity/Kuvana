@@ -7,10 +7,10 @@
   "description": "KUVANA",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "test"
   },
+  "type": "module",
   "author": "",
   "license": "ISC"
 }
