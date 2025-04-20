@@ -6,4 +6,5 @@ Kuvana is a decentralized microfinancing protocol built natively on the Polkadot
 
 ## Gallery
 ![Repayment Contract Deployed on Westend Testnet](readme-assets/image.pngimage.png)
-![Demo of smart contract working](<readme-assets/2025-04-20 10-20-58.mkv>)
+![Demo of Loan Repayment Smart Contract](<readme-assets/2025-04-20 10-20-58.mkv>)
+![Demo of Lending Smart Contract](<readme-assets/2025-04-20 12-37-38.mkv>)
